@@ -1,3 +1,5 @@
+use base64::Engine as _;
+use base64::engine::general_purpose::STANDARD;
 use chrono::NaiveDateTime;
 use extractous::Extractor;
 use regex::Regex;
@@ -156,7 +158,10 @@ pub fn process_pdf_from_base64(
     pdf_base64_string: &str,
     extractor: &Extractor,
 ) -> Result<Vec<SignatureEvent>, AppError> {
-    let pdf_bytes: Vec<u8> = base64::decode(pdf_base64_string)
+    // let pdf_bytes: Vec<u8> = base64::decode(pdf_base64_string)
+    //     .map_err(|e| AppError::InvalidData(format!("Erro ao decodificar Base64: {e}")))?;
+    let pdf_bytes = STANDARD
+        .decode(pdf_base64_string) // <--- MUDANÇA AQUI
         .map_err(|e| AppError::InvalidData(format!("Erro ao decodificar Base64: {e}")))?;
 
     let mut temp_pdf_file = NamedTempFile::new().map_err(AppError::Io)?;
