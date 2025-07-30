@@ -323,12 +323,9 @@ mod tests {
         match description {
             "success" => {
                 let events = result.expect("Deveria ter tido sucesso na extração");
-                assert_eq!(events.len(), 2);
-                assert_eq!(events[0].ip_address, Some("189.60.187.14".to_string()));
-                assert_eq!(
-                    events[1].geolocation,
-                    Some("-23.5489, -46.6388".to_string())
-                );
+                assert_eq!(events.len(), 3);
+                assert_eq!(events[0].ip_address, Some("186.251.21.12".to_string()));
+                assert_eq!(events[1].geolocation, Some("0,0".to_string()));
             }
             "no marker" => {
                 assert!(matches!(result, Err(AppError::EventsLogs)));
