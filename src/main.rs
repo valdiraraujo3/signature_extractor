@@ -1,6 +1,6 @@
 use base64::{Engine as _, engine::general_purpose::STANDARD};
 use extractous::Extractor;
-//use signature_extractor::error::AppError;
+use signature_extractor::error::AppError;
 use signature_extractor::*;
 use std::fs;
 use std::path::PathBuf;
@@ -8,6 +8,7 @@ use std::path::PathBuf;
 fn get_project_root() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR"))
 }
+/*
 fn main() {
     let mut pdf_path = get_project_root();
     pdf_path.push("tests/DOC1.pdf");
@@ -20,8 +21,8 @@ fn main() {
     let data = process_pdf_from_base64(&pdf_b64, &extractor);
     println!("{data:?}");
 }
+*/
 
-/*
 fn main() -> Result<(), AppError> {
     let mut pdf_path = get_project_root();
     pdf_path.push("tests/DOC1.pdf");
@@ -44,4 +45,3 @@ fn main() -> Result<(), AppError> {
         }
     }
 }
-*/
