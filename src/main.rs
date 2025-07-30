@@ -12,7 +12,7 @@ fn main() {
     let mut pdf_path = get_project_root();
     pdf_path.push("tests/DOC1.pdf");
 
-    let pdf_bytes = fs::read(pdf_path).expect("Não foi possível ler o arquivo sample.pdf");
+    let pdf_bytes = fs::read(pdf_path).expect("Não foi possível ler o arquivo DOC1.pdf");
     let pdf_b64 = STANDARD.encode(pdf_bytes);
 
     let extractor = Extractor::new();
