@@ -46,7 +46,7 @@ fn test_process_pdf_from_file_with_fixtures(extractor: Extractor, sample_pdf_pat
 
 #[rstest]
 fn test_process_pdf_from_base64_with_fixtures(extractor: Extractor, sample_pdf_path: PathBuf) {
-    let pdf_bytes = fs::read(sample_pdf_path).expect("Não foi possível ler o arquivo sample.pdf");
+    let pdf_bytes = fs::read(sample_pdf_path).expect("Não foi possível ler o arquivo DOC1.pdf");
     let pdf_base64 = STANDARD.encode(pdf_bytes);
 
     let result = process_pdf_from_base64(&pdf_base64, &extractor);

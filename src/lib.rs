@@ -243,14 +243,14 @@ mod tests {
     use rstest::{fixture, rstest};
 
     const FAKE_PDF_CONTENT_SUCCESS: &str = r#"
-        2. Log’s e eventos do processo de assinatura:
+        2. Log's e eventos do processo de assinatura:
 
         Evento: Dados do Dispositivo: Data e hora (UTC -3):
 
         O documento 98edc2bc-2063-466f-
         855e-7f3f5202a046 foi criado e enviado
 
-        IP de acesso: 162.220.232.127
+        IP de acesso: 186.251.21.12
 
         Porta lógica:
         16/07/2025 15:10:19
@@ -283,7 +283,7 @@ mod tests {
 
         16/07/2025 15:11:40
 
-        O signatário ENZO REDIVO CANELLA leu
+        O signatário QUEM ASSINOU leu
         e concordou com o documento.
 
         Dispositivo:Mozilla/5.0 (X11; Linux
@@ -311,7 +311,7 @@ mod tests {
     "#;
 
     const FAKE_PDF_CONTENT_NO_MARKER: &str = "O processo de assinatura do signatário.";
-    const FAKE_PDF_CONTENT_NO_DATA: &str = "2. Log’s e eventos do processo de assinatura:";
+    const FAKE_PDF_CONTENT_NO_DATA: &str = "2. Log's e eventos do processo de assinatura:";
 
     #[rstest]
     #[case("success", FAKE_PDF_CONTENT_SUCCESS)]
@@ -340,8 +340,8 @@ mod tests {
     #[fixture]
     fn valid_signature_event() -> SignatureEvent {
         SignatureEvent {
-            geolocation: Some("-27.5935, -48.55854".to_string()),
-            ip_address: Some("189.60.187.14".to_string()),
+            geolocation: Some("0,0".to_string()),
+            ip_address: Some("186.251.21.12".to_string()),
             signed_at: NaiveDate::from_ymd_opt(2024, 7, 19)
                 .unwrap()
                 .and_hms_opt(16, 50, 1)
@@ -355,8 +355,8 @@ mod tests {
         let record_text = r#"
             Assinatura em lote realizada
             Dispositivo: Sistema Unico de Processo Eletronico em Santa Catarina
-            Geolocalização (DD): -27.5935, -48.55854
-            IP de acesso: 189.60.187.14
+            Geolocalização (DD): 0,0
+            IP de acesso: 186.251.21.12
             19/07/2024 16:50:01
     "#;
 
