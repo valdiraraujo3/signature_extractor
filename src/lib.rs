@@ -158,10 +158,8 @@ pub fn process_pdf_from_base64(
     pdf_base64_string: &str,
     extractor: &Extractor,
 ) -> Result<Vec<SignatureEvent>, AppError> {
-    // let pdf_bytes: Vec<u8> = base64::decode(pdf_base64_string)
-    //     .map_err(|e| AppError::InvalidData(format!("Erro ao decodificar Base64: {e}")))?;
     let pdf_bytes = STANDARD
-        .decode(pdf_base64_string) // <--- MUDANÇA AQUI
+        .decode(pdf_base64_string)
         .map_err(|e| AppError::InvalidData(format!("Erro ao decodificar Base64: {e}")))?;
 
     let mut temp_pdf_file = NamedTempFile::new().map_err(AppError::Io)?;
@@ -360,7 +358,7 @@ mod tests {
             19/07/2024 16:50:01
     "#;
 
-        let result = parse_record_to_details(record_text);
+        let result = parse_record_to_details(record_text);        
 
         assert_eq!(result, Some(valid_signature_event));
     }
