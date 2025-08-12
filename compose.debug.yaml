@@ -1,0 +1,6 @@
+services:
+  signatureextractor:
+    image: signatureextractor
+    build:
+      context: .
+      dockerfile: ./Dockerfile
