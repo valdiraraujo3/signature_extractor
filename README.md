@@ -4,6 +4,7 @@ Este projeto é um utilitário que lê um arquivo PDF localmente, extrai eventos
 Ele serve como um publicador de eventos, ideal para ser usado em um pipeline de processamento de documentos.
 
 Como Funciona ⚙️
+
 O programa se conecta a um servidor NATS.
 
 Cria ou obtém um stream JetStream com um tópico (pdf.events.started).
