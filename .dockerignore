@@ -5,6 +5,7 @@
 **/.gitignore
 **/.project
 **/.settings
+**/.target
 **/.toolstarget
 **/.vs
 **/.vscode
@@ -23,3 +24,4 @@
 **/values.dev.yaml
 LICENSE
 README.md
+
